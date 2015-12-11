@@ -8,7 +8,7 @@ class xmlParser {
         $ch = curl_init();
 
         // informar URL e outras funções ao CURL
-        curl_setopt($ch, CURLOPT_URL, "http://api.zanox.com/xml/2011-03-01/incentives/?connectid=DC00C374EE28B3DF5859&region=BR&adspace=2059117&incentiveType=coupons");
+        curl_setopt($ch, CURLOPT_URL, "URL");
         //curl_setopt($ch, CURLOPT_USERAGENT, ‘My custom web spider/0.1’);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -20,7 +20,7 @@ class xmlParser {
     }
     
     public function createXml(){
-        $url = 'http://api.zanox.com/xml/2011-03-01/incentives/?connectid=DC00C374EE28B3DF5859&region=BR&adspace=2059117&incentiveType=coupons';
+        $url = 'URL';
         $xml = new SimpleXMLElement(file_get_contents($url));
         $xml->asXML("zanox.xml");
         return $xml;
