@@ -20,7 +20,7 @@ class xmlParser {
     }
     
     public function createXml(){
-        $url = 'URL';
+        $url = "URL";
         $xml = new SimpleXMLElement(file_get_contents($url));
         $xml->asXML("zanox.xml");
         return $xml;
@@ -69,21 +69,28 @@ class xmlParser {
                 $arrayPrograms[] = $program;
                 
                 //$nameString = $this->revealName($program);
-                $nameString = explode($program);
-                $nameString = array_shift($name);
-                $nameString = array_pop($name);
-
-                print_r($nameString);
+                $nameString = end($program);
+                $nameString = explode(" ", $nameString);
+                array_pop($nameString);
+                $nameString = implode($nameString, ' ');
                 
-                echo $nameString;
-                if(!in_array($program, $arrayPrograms)){
+                $nameCode = str_replace(" ", "-", $nameString);
+                //print_r($nameString);
+                //print_r($nameString);
+                //die();
+            
+                //if(!in_array($program, $arrayPrograms)){
                     $htmlItem .='<h2 class="h-cupom" id="h-cupom-'.$nameString.'">Cupons '.$program.'</h2>';
-                }
+                //}
                 
                 $htmlItem .='<div class="campo-cupom">';
-                $htmlItem .='<span class="logo-cupom"><img src="http://outlet.papofitness.com.br/wp-content/themes/outlet-papofit/images/logo-cupom/cupom-desconto-logo-'.$nameString.'.jpg"></span>';
+                
+                $htmlItem .='<span class="logo-cupom"><img src="http://outlet.papofitness.com.br/wp-content/themes/outlet-papofit/images/logo-cupom/cupom-de-desconto-logo-'. strtolower($nameCode) .'.jpg"></span>';
+                
                 $htmlItem .='<h3 class="titulo-cupom">'.$name.'</h3><p class="prazo-cupom">Válido até '.$endDate.'</p>';
+                
                 $htmlItem .='<p class="info-cupom">Mais informações <span>'.$description.'</span></p>';
+                
                 $htmlItem .='<a class="botao-cupom"><img src="http://outlet.papofitness.com.br/wp-content/uploads/2015/12/botao-ver-cupom.jpg"></a></div>';
                 
                 $html .= $htmlItem;
