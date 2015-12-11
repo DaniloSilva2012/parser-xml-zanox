@@ -26,6 +26,13 @@ class xmlParser {
         return $xml;
     }
 
+    public function verifyHtml(){
+        //if(file_exists('zanox.html')){
+        //    include 'zanox.html';
+        //} else {
+        return $this->filterXml();
+        //}
+    }
     
     public function readXml(){
         //$start = microtime(true);
@@ -44,9 +51,8 @@ class xmlParser {
     
     public function filterXml(){
         
-        $xml = $this->readXml();
-        
         try{
+            $xml = $this->readXml();
             $parent = $xml->incentiveItems;
             $itens = $parent->incentiveItem;
             $html = '';
@@ -67,14 +73,12 @@ class xmlParser {
                 $nameString = array_shift($name);
                 $nameString = array_pop($name);
 
-                //Natue
-
                 print_r($nameString);
                 
                 echo $nameString;
-                //if(!in_array($program, $arrayPrograms)){
+                if(!in_array($program, $arrayPrograms)){
                     $htmlItem .='<h2 class="h-cupom" id="h-cupom-'.$nameString.'">Cupons '.$program.'</h2>';
-                //}
+                }
                 
                 $htmlItem .='<div class="campo-cupom">';
                 $htmlItem .='<span class="logo-cupom"><img src="http://outlet.papofitness.com.br/wp-content/themes/outlet-papofit/images/logo-cupom/cupom-desconto-logo-'.$nameString.'.jpg"></span>';
@@ -85,11 +89,18 @@ class xmlParser {
                 $html .= $htmlItem;
             }
             
-            echo $html;
+            $this->createHtml($html);
+            return $html;
             
         } catch (Exception $e){
             echo $e->getMessage();
         }
+    }
+    
+    public function createHtml($html){
+        $zanoxHtml = fopen("zanox.html", "w") or die("Unable to open file!");
+        fwrite($zanoxHtml, $html);
+        fclose($zanoxHtml);
     }
     
     public function revealName($program){

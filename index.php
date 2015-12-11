@@ -6,20 +6,13 @@
 </head>
 <body>
     
-
-
-
 <?php 
-
+    
     include 'classXml.php';
     
     $test = new xmlParser();
-    
-    echo $test->filterXml();
-    echo '<br><br><br>-----------------------------------------------------------------------------------------------------------------<br><br><br>';
-    //echo $test->filterXml();
-
-    
+ 
+    echo $test->verifyHtml();   
 ?>
 
 </body>
