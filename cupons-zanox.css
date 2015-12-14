@@ -1,0 +1,82 @@
+    .lightbox-zanox{
+        display: none;
+        position: fixed;
+        width: 630px;
+        height: 400px;
+        top: 50%;
+        background: #fff;
+        border: 1px solid;
+        padding: 20px;
+        margin-top: -200px;
+        left: 50%;
+        margin-left: -315px;
+        z-index: 3;
+    }
+    
+    .lightbox-zanox-opacity{
+        display: none;
+        background: #333;
+        opacity: 0.5;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+    }
+
+.logo-cupom{
+    width: 100px;
+    height: 100px;
+}
+
+.prazo-cupom{    
+    margin-left: 50px!important;
+}
+
+.info-cupom{cursor: pointer}
+
+.more-information{
+    padding: 0px 20px 10px;
+    float:left;
+    width: 92%;
+}
+
+.more-information span{
+    font-weight: bold;
+}
+
+    
+    .more-information-show{
+        display: block;
+    }
+    
+    .more-information-hide{
+        display: none;
+    }
+
+
+.campo-cupom{
+    min-height: 100px;
+    display: inline-block;
+    height: auto!important;
+}
+
+h2.h-cupom{
+    color: #FF6704;
+    font-size: 25px;
+    margin-top: 100px;
+}
+
+.botao-cupom {
+    position: absolute;
+    right: 0;
+    top: 56px;
+}
+
+.titulo-cupom{
+    margin-left: 160px;
+    width: 316px;
+}
+
+
